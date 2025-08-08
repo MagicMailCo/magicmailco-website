@@ -633,8 +633,10 @@
             <div class="signup-content">
                 <h3>Be the First to Experience the Magic!</h3>
                 <p>Join our early access list and be notified when Magic Mail Co. launches this fall.</p>
-                <form class="email-form" action="#" method="POST">
-                    <input type="email" class="email-input" placeholder="Enter your email address" required>
+                <form class="email-form" action="https://formspree.io/f/mjkopplw" method="POST">
+                    <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
+                    <input type="hidden" name="_next" value="https://magicmailco.com">
+                    <input type="hidden" name="_subject" value="New Magic Mail Co. Signup!">
                     <button type="submit" class="submit-btn">Join Waitlist</button>
                 </form>
                 <small>We'll never spam you - just magical updates about our launch!</small>
@@ -678,14 +680,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-        
-        // Email form submission
-        document.querySelector('.email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            alert('Thank you! We\'ll notify you when the magic begins!');
-            this.reset();
         });
         
         createStars();
