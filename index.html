@@ -63,8 +63,8 @@
             border-radius: 20px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             border: 1px solid rgba(255,255,255,0.2);
-            width: 100%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -129,8 +129,8 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.5rem;
-            color: #ccc;
-            animation: pulse 2s infinite;
+            color: #f4d03f;
+            animation: gentle-twinkle 3s infinite ease-in-out;
         }
         
         .hero h2::before {
@@ -140,13 +140,13 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.5rem;
-            color: #ccc;
-            animation: pulse 2s infinite 1s;
+            color: #f4d03f;
+            animation: gentle-twinkle 3s infinite ease-in-out 1.5s;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+        @keyframes gentle-twinkle {
+            0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
         }
         
         .hero p {
