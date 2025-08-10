@@ -50,11 +50,7 @@
         }
         
         .header-ornament {
-            width: 200px;
-            height: 40px;
-            margin: 0 auto 30px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40"><path d="M10 20 Q50 5 100 20 Q150 5 190 20" stroke="%23c9a96e" stroke-width="2" fill="none"/><circle cx="30" cy="15" r="2" fill="%23c9a96e"/><circle cx="100" cy="20" r="3" fill="%23c9a96e"/><circle cx="170" cy="15" r="2" fill="%23c9a96e"/></svg>') no-repeat center;
-            background-size: contain;
+            display: none;
         }
         
         .brand-title {
@@ -69,20 +65,7 @@
         
         .brand-title::before,
         .brand-title::after {
-            content: '❦';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5rem;
-            color: var(--soft-gold);
-        }
-        
-        .brand-title::before {
-            left: -80px;
-        }
-        
-        .brand-title::after {
-            right: -80px;
+            display: none;
         }
         
         .tagline {
