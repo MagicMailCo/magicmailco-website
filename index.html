@@ -457,35 +457,117 @@
             border-bottom-color: #999;
         }
         
-        .floating-element {
+        .watercolor-star {
             position: absolute;
-            color: #e8e8e8;
-            font-size: 2rem;
-            animation: float 6s ease-in-out infinite;
             pointer-events: none;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .watercolor-star-large {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, 
+                rgba(244, 208, 63, 0.8) 0%, 
+                rgba(230, 126, 34, 0.6) 40%, 
+                rgba(211, 84, 0, 0.4) 70%, 
+                transparent 100%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
         
-        .floating-element:nth-child(1) {
-            top: 15%;
-            right: 8%;
-            animation-delay: 0s;
+        .watercolor-star-medium {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, 
+                rgba(244, 208, 63, 0.7) 0%, 
+                rgba(230, 126, 34, 0.5) 50%, 
+                transparent 80%);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
         
-        .floating-element:nth-child(2) {
-            bottom: 20%;
-            left: 6%;
-            animation-delay: 2s;
+        .watercolor-diamond {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(ellipse, 
+                rgba(244, 208, 63, 0.6) 0%, 
+                rgba(230, 126, 34, 0.4) 60%, 
+                transparent 90%);
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            transform: rotate(45deg);
         }
         
-        .floating-element:nth-child(3) {
-            top: 50%;
-            right: 4%;
-            animation-delay: 4s;
+        .watercolor-circle {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, 
+                rgba(244, 208, 63, 0.5) 0%, 
+                rgba(230, 126, 34, 0.3) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+        }
+        
+        .watercolor-branch {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .branch-stem {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, 
+                rgba(120, 144, 100, 0.6) 0%, 
+                rgba(85, 107, 47, 0.5) 50%, 
+                rgba(75, 95, 40, 0.4) 100%);
+            border-radius: 2px;
+            position: relative;
+        }
+        
+        .branch-leaf {
+            position: absolute;
+            background: radial-gradient(ellipse 70% 100%, 
+                rgba(152, 172, 127, 0.7) 0%, 
+                rgba(120, 144, 100, 0.6) 40%, 
+                rgba(95, 119, 75, 0.4) 70%, 
+                transparent 90%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+        
+        .leaf-1 {
+            width: 15px;
+            height: 25px;
+            top: 10px;
+            left: -8px;
+            transform: rotate(-25deg);
+        }
+        
+        .leaf-2 {
+            width: 12px;
+            height: 20px;
+            top: 20px;
+            right: -8px;
+            transform: rotate(30deg);
+        }
+        
+        .leaf-3 {
+            width: 18px;
+            height: 28px;
+            top: 35px;
+            left: -10px;
+            transform: rotate(-35deg);
+        }
+        
+        .leaf-4 {
+            width: 14px;
+            height: 22px;
+            top: 45px;
+            right: -9px;
+            transform: rotate(25deg);
+        }
+        
+        .leaf-5 {
+            width: 16px;
+            height: 24px;
+            top: 60px;
+            left: -9px;
+            transform: rotate(-20deg);
         }
         
         @media (max-width: 768px) {
@@ -527,7 +609,10 @@
                 gap: 40px;
             }
             
-            .floating-element {
+            .watercolor-star,
+            .watercolor-diamond,
+            .watercolor-circle,
+            .watercolor-branch {
                 display: none;
             }
             
@@ -552,9 +637,13 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="floating-element">✧</div>
-                <div class="floating-element">◈</div>
-                <div class="floating-element">✦</div>
+                <div class="watercolor-star watercolor-star-large" style="top: 10%; right: 12%;"></div>
+                <div class="watercolor-star watercolor-star-medium" style="top: 20%; left: 8%;"></div>
+                <div class="watercolor-diamond" style="top: 15%; right: 25%;"></div>
+                <div class="watercolor-circle" style="top: 25%; left: 20%;"></div>
+                <div class="watercolor-star watercolor-star-medium" style="bottom: 15%; right: 15%;"></div>
+                <div class="watercolor-circle" style="bottom: 20%; left: 10%;"></div>
+                <div class="watercolor-diamond" style="bottom: 10%; right: 30%;"></div>
                 
                 <h2>Where Magic Meets Wonder</h2>
                 <p>Real-time magical conversations that bring joy and enchantment to children of all ages. Beloved characters are waiting to hear from your little ones!</p>
@@ -566,6 +655,33 @@
     <section class="features">
         <div class="container">
             <div class="features-content">
+                <div class="watercolor-branch" style="top: 8%; left: 5%;">
+                    <div class="branch-stem">
+                        <div class="branch-leaf leaf-1"></div>
+                        <div class="branch-leaf leaf-2"></div>
+                        <div class="branch-leaf leaf-3"></div>
+                        <div class="branch-leaf leaf-4"></div>
+                        <div class="branch-leaf leaf-5"></div>
+                    </div>
+                </div>
+                <div class="watercolor-branch" style="top: 15%; right: 8%; transform: rotate(25deg);">
+                    <div class="branch-stem">
+                        <div class="branch-leaf leaf-1"></div>
+                        <div class="branch-leaf leaf-2"></div>
+                        <div class="branch-leaf leaf-3"></div>
+                        <div class="branch-leaf leaf-4"></div>
+                    </div>
+                </div>
+                <div class="watercolor-branch" style="bottom: 10%; left: 12%; transform: rotate(-15deg);">
+                    <div class="branch-stem">
+                        <div class="branch-leaf leaf-1"></div>
+                        <div class="branch-leaf leaf-2"></div>
+                        <div class="branch-leaf leaf-3"></div>
+                        <div class="branch-leaf leaf-4"></div>
+                        <div class="branch-leaf leaf-5"></div>
+                    </div>
+                </div>
+                
                 <h3>The Magic Awaits</h3>
                 <div class="feature-grid">
                     <div class="feature-card">
