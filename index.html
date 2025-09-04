@@ -7,12 +7,7 @@
     <meta name="description" content="Elegant magical conversations between children and beloved characters. Creating wonder through meaningful connections.">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --cream: #faf7f0;
             --warm-beige: #f5f1e8;
@@ -23,7 +18,6 @@
             --charcoal: #2c2c2c;
             --soft-gold: #c9a96e;
         }
-        
         body {
             font-family: 'Crimson Text', serif;
             line-height: 1.6;
@@ -31,28 +25,9 @@
             background: var(--cream);
             min-height: 100vh;
         }
-        
-        /* Decorative botanical elements */
-
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-        }
-        
-        /* Header with ornate styling */
-        header {
-            padding: 40px 0 60px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .header-ornament {
-            display: none;
-        }
-        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; }
+        header { padding: 40px 0 60px; text-align: center; position: relative; }
+        .header-ornament { display: none; }
         .brand-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
@@ -62,12 +37,7 @@
             letter-spacing: 3px;
             position: relative;
         }
-        
-        .brand-title::before,
-        .brand-title::after {
-            display: none;
-        }
-        
+        .brand-title::before, .brand-title::after { display: none; }
         .tagline {
             font-size: 1.3rem;
             color: var(--sage-green);
@@ -75,13 +45,7 @@
             font-weight: 400;
             letter-spacing: 1px;
         }
-        
-        /* Main content sections with decorative borders */
-        .section {
-            margin: 100px 0;
-            position: relative;
-        }
-        
+        .section { margin: 100px 0; position: relative; }
         .ornate-box {
             background: var(--warm-beige);
             border: 3px solid var(--sage-green);
@@ -90,7 +54,6 @@
             position: relative;
             box-shadow: 0 10px 30px rgba(74, 93, 58, 0.1);
         }
-        
         .ornate-box::before {
             content: '';
             position: absolute;
@@ -101,12 +64,6 @@
             border: 1px solid var(--soft-gold);
             pointer-events: none;
         }
-        
-        /* Corner decorations */
-        .ornate-box::after {
-            display: none;
-        }
-        
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
@@ -116,7 +73,6 @@
             margin-bottom: 40px;
             position: relative;
         }
-        
         .section-title::after {
             content: '';
             display: block;
@@ -125,7 +81,6 @@
             background: var(--soft-gold);
             margin: 20px auto;
         }
-        
         .hero-text {
             font-size: 1.4rem;
             line-height: 1.8;
@@ -136,7 +91,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         .cta-button {
             background: var(--deep-forest);
             color: var(--cream);
@@ -153,7 +107,6 @@
             position: relative;
             overflow: hidden;
         }
-        
         .cta-button::before {
             content: '';
             position: absolute;
@@ -165,29 +118,16 @@
             transition: left 0.3s ease;
             z-index: 1;
         }
-        
-        .cta-button span {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .cta-button:hover::before {
-            left: 0;
-        }
-        
-        .cta-button:hover {
-            border-color: var(--sage-green);
-            color: var(--cream);
-        }
-        
-        /* Features grid with elegant styling */
+        .cta-button span { position: relative; z-index: 2; }
+        .cta-button:hover::before { left: 0; }
+        .cta-button:hover { border-color: var(--sage-green); color: var(--cream); }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 50px;
             margin-top: 60px;
         }
-        
         .feature-item {
             text-align: center;
             padding: 40px 30px;
@@ -195,7 +135,6 @@
             border: 2px solid var(--sage-green);
             position: relative;
         }
-        
         .feature-item::before {
             content: '';
             position: absolute;
@@ -206,25 +145,19 @@
             border: 1px solid var(--soft-coral);
             pointer-events: none;
         }
-        
         .feature-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 24px;
-    background: url('stars.png') no-repeat center;
-    background-size: contain;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(99, 102, 241, 0.2);
-}
-        
-        .feature-icon svg {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+        .feature-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
         .feature-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -232,14 +165,11 @@
             color: var(--deep-forest);
             margin-bottom: 15px;
         }
-        
         .feature-description {
             font-size: 1.1rem;
             color: var(--charcoal);
             line-height: 1.6;
         }
-        
-        /* How it works section */
         .steps-container {
             display: flex;
             justify-content: center;
@@ -249,18 +179,9 @@
             margin: 60px auto 0;
             text-align: center;
         }
-        
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        
+        .step { flex: 1; text-align: center; position: relative; max-width: 300px; margin: 0 auto; }
         .step-number {
-            width: 80px;
-            height: 80px;
+            width: 80px; height: 80px;
             margin: 0 auto 30px;
             background: var(--deep-forest);
             color: var(--cream);
@@ -273,7 +194,6 @@
             font-weight: 600;
             border: 3px solid var(--soft-gold);
         }
-        
         .step-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
@@ -281,14 +201,8 @@
             color: var(--deep-forest);
             margin-bottom: 15px;
         }
-        
-        .step-description {
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            line-height: 1.6;
-        }
-        
-        /* Newsletter section with letter-like styling */
+        .step-description { font-size: 1.1rem; color: var(--charcoal); line-height: 1.6; }
+
         .newsletter-section {
             background: var(--warm-beige);
             border: 4px double var(--deep-forest);
@@ -297,7 +211,6 @@
             position: relative;
             margin: 80px 0;
         }
-        
         .newsletter-section::before {
             content: '';
             position: absolute;
@@ -308,7 +221,6 @@
             border: 1px solid var(--sage-green);
             pointer-events: none;
         }
-        
         .newsletter-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -316,22 +228,13 @@
             color: var(--deep-forest);
             margin-bottom: 20px;
         }
-        
         .newsletter-subtitle {
             font-size: 1.2rem;
             color: var(--charcoal);
             margin-bottom: 40px;
             font-style: italic;
         }
-        
-        .email-form {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
+        .email-form { display: flex; justify-content: center; gap: 15px; max-width: 500px; margin: 0 auto; }
         .email-input {
             flex: 1;
             padding: 15px 20px;
@@ -341,13 +244,11 @@
             font-family: 'Crimson Text', serif;
             color: var(--charcoal);
         }
-        
         .email-input:focus {
             outline: none;
             border-color: var(--deep-forest);
             box-shadow: 0 0 0 2px rgba(74, 93, 58, 0.2);
         }
-        
         .submit-btn {
             background: var(--rich-burgundy);
             color: var(--cream);
@@ -360,20 +261,9 @@
             transition: all 0.3s ease;
             letter-spacing: 1px;
         }
-        
-        .submit-btn:hover {
-            background: var(--cream);
-            color: var(--rich-burgundy);
-        }
-        
-        .newsletter-note {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: var(--sage-green);
-            font-style: italic;
-        }
-        
-        /* Footer */
+        .submit-btn:hover { background: var(--cream); color: var(--rich-burgundy); }
+        .newsletter-note { margin-top: 25px; font-size: 0.9rem; color: var(--sage-green); font-style: italic; }
+
         footer {
             background: var(--deep-forest);
             color: var(--cream);
@@ -381,7 +271,6 @@
             text-align: center;
             border-top: 3px solid var(--soft-gold);
         }
-        
         .footer-ornament {
             width: 150px;
             height: 30px;
@@ -389,22 +278,8 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 30"><path d="M10 15 Q75 5 140 15" stroke="%23c9a96e" stroke-width="2" fill="none"/><circle cx="25" cy="12" r="2" fill="%23c9a96e"/><circle cx="75" cy="15" r="3" fill="%23c9a96e"/><circle cx="125" cy="12" r="2" fill="%23c9a96e"/></svg>') no-repeat center;
             background-size: contain;
         }
-        
-        .footer-links {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-        
-        .footer-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 1rem;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
+        .footer-links { margin: 20px 0; display: flex; justify-content: center; gap: 40px; }
+        .footer-links a { color: var(--cream); text-decoration: none; font-size: 1rem; position: relative; transition: color 0.3s ease; }
         .footer-links a::after {
             content: '';
             position: absolute;
@@ -415,58 +290,21 @@
             background: var(--soft-gold);
             transition: width 0.3s ease;
         }
-        
-        .footer-links a:hover {
-            color: var(--soft-gold);
-        }
-        
-        .footer-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Responsive design */
+        .footer-links a:hover { color: var(--soft-gold); }
+        .footer-links a:hover::after { width: 100%; }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            .brand-title {
-                font-size: 2.5rem;
-            }
-            
-            .brand-title::before,
-            .brand-title::after {
-                display: none;
-            }
-            
-            .ornate-box {
-                padding: 40px 30px;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .steps-container {
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .email-form {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 20px;
-            }
+            .container { padding: 0 20px; }
+            .brand-title { font-size: 2.5rem; }
+            .ornate-box { padding: 40px 30px; }
+            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .steps-container { flex-direction: column; gap: 40px; }
+            .email-form { flex-direction: column; gap: 15px; }
+            .footer-links { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
-    
     <header>
         <div class="container">
             <div class="header-ornament"></div>
@@ -474,7 +312,7 @@
             <p class="tagline">Real Connections, Magical Conversations</p>
         </div>
     </header>
-    
+
     <main>
         <section class="section">
             <div class="container">
@@ -485,87 +323,67 @@
                         Each exchange is a doorway to imagination, creating treasured moments that families hold dear.
                     </p>
                     <div style="text-align: center;">
-                        <a href="#signup" class="cta-button">
-                            <span>Begin the Journey</span>
-                        </a>
+                        <a href="#signup" class="cta-button"><span>Begin the Journey</span></a>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <section class="section">
             <div class="container">
                 <h2 class="section-title">The Magic We Create</h2>
                 <div class="features-grid">
                     <div class="feature-item">
-                        <div class="feature-icon">✨</div>
+                        <div class="feature-icon">
+                            <img src="stars.png" srcset="stars@2x.png 2x" alt="Personalized Wonder">
+                        </div>
                         <h3 class="feature-title">Personalized Wonder</h3>
                         <p class="feature-description">Every conversation is carefully tailored to your child's unique personality, age, and interests.</p>
                     </div>
-                    
-                  <div class="feature-item">
-    <svg width="50" height="75" xmlns="http://www.w3.org/2000/svg" class="feature-icon">
-      <g>
-        <path d="M 5 70 Q 12.5 62.5 20 57.5 Q 27.5 52.5 35 50 Q 42.5 47.5 50 45" fill="none" stroke="green" stroke-width="0.5"/>
-        <ellipse cx="15" cy="55" rx="2" ry="3" fill="#4A7045"/>
-        <ellipse cx="22.5" cy="47.5" rx="2.5" ry="3.75" fill="#4A7045"/>
-        <ellipse cx="30" cy="42.5" rx="1.75" ry="2.5" fill="#4A7045"/>
-        <ellipse cx="37.5" cy="40" rx="2.25" ry="3.25" fill="#4A7045"/>
-        <path d="M 10 67.5 L 11.25 65 L 12.5 67.5 Z" fill="#A9CBA4"/>
-        <path d="M 17.5 60 L 18.75 57.5 L 20 60 Z" fill="#A9CBA4"/>
-        <path d="M 25 52.5 L 26.25 50 L 27.5 52.5 Z" fill="#A9CBA4"/>
-        <path d="M 32.5 45 L 33.75 42.5 L 35 45 Z" fill="#A9CBA4"/>
-      </g>
-    </svg>
-    <h3 class="feature-title">Gentle Guidance</h3>
-    <p class="feature-description">All interactions are lovingly supervised, ensuring safe and meaningful connections.</p>
-</div>
 
-<style>
-    .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .feature-icon {
-        width: 50px;
-        height: 75px;
-    }
-    .feature-title {
-        margin: 0;
-    }
-    .feature-description {
-        margin: 5px 0 0;
-    }
-</style>
-                    
                     <div class="feature-item">
-                        <div class="feature-icon">📜</div>
+                        <div class="feature-icon">
+                            <img src="Olive Branch.png" srcset="Olive Branch@2x.png 2x" alt="Gentle Guidance">
+                        </div>
+                        <h3 class="feature-title">Gentle Guidance</h3>
+                        <p class="feature-description">All interactions are lovingly supervised, ensuring safe and meaningful connections.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <img src="Scroll.png" srcset="Scroll@2x.png 2x" alt="Treasured Keepsakes">
+                        </div>
                         <h3 class="feature-title">Treasured Keepsakes</h3>
                         <p class="feature-description">Beautiful conversation memories preserved for your family to cherish forever.</p>
                     </div>
-                    
+
                     <div class="feature-item">
-                        <div class="feature-icon">🎭</div>
+                        <div class="feature-icon">
+                            <img src="wand.png" srcset="wand@2x.png 2x" alt="Seasonal Magic">
+                        </div>
                         <h3 class="feature-title">Seasonal Magic</h3>
                         <p class="feature-description">Connect with beloved characters throughout the year, from holiday magic to everyday wonder.</p>
                     </div>
-                    
+
                     <div class="feature-item">
-                        <div class="feature-icon">💝</div>
+                        <div class="feature-icon">
+                            <img src="heart.png" srcset="heart@2x.png 2x" alt="Thoughtful Insights">
+                        </div>
                         <h3 class="feature-title">Thoughtful Insights</h3>
                         <p class="feature-description">Discover new depths to your child's imagination through their magical conversations.</p>
                     </div>
-                    
+
                     <div class="feature-item">
-                        <div class="feature-icon">🏛️</div>
+                        <div class="feature-icon">
+                            <img src="home.png" srcset="home@2x.png 2x" alt="Premium Experience">
+                        </div>
                         <h3 class="feature-title">Premium Experience</h3>
                         <p class="feature-description">An elegant, refined platform designed with the utmost care for discerning families.</p>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <section class="section">
             <div class="container">
                 <div class="ornate-box">
@@ -576,13 +394,13 @@
                             <h3 class="step-title">Create Your Family</h3>
                             <p class="step-description">Establish your elegant family account with personalized details for each child.</p>
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">II</div>
                             <h3 class="step-title">Begin Conversations</h3>
                             <p class="step-description">Your child enters a beautifully designed space to connect with magical friends.</p>
                         </div>
-                        
+
                         <div class="step">
                             <div class="step-number">III</div>
                             <h3 class="step-title">Cherish the Moments</h3>
@@ -592,7 +410,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="newsletter-section" id="signup">
             <div class="container">
                 <h3 class="newsletter-title">Join Our Exclusive Circle</h3>
@@ -607,7 +425,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <div class="footer-ornament"></div>
@@ -619,18 +437,14 @@
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
