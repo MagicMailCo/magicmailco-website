@@ -1,242 +1,426 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magic Mail Co. - Real Connections, Magical Conversations</title>
-  <meta name="description" content="Elegant magical conversations between children and beloved characters. Creating wonder through meaningful connections.">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Mail Co. - Real Connections, Magical Conversations</title>
+    <meta name="description" content="Elegant magical conversations between children and beloved characters. Creating wonder through meaningful connections.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --cream: #faf7f0;
+            --warm-beige: #f5f1e8;
+            --sage-green: #9caf88;
+            --deep-forest: #4a5d3a;
+            --soft-coral: #d4a574;
+            --rich-burgundy: #8b4a4a;
+            --charcoal: #2c2c2c;
+            --soft-gold: #c9a96e;
+        }
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--cream);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; }
+        header { padding: 40px 0 20px; text-align: center; position: relative; }
+        .header-ornament { display: none; }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--deep-forest);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        .brand-title::before, .brand-title::after { display: none; }
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--sage-green);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .section { margin: 40px 0; position: relative; }
+        .ornate-box {
+            background: var(--warm-beige);
+            border: 3px solid var(--sage-green);
+            border-radius: 0;
+            padding: 60px 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(74, 93, 58, 0.1);
+        }
+        .ornate-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--soft-gold);
+            pointer-events: none;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--soft-gold);
+            margin: 20px auto;
+        }
+        .hero-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            background: var(--deep-forest);
+            color: var(--cream);
+            padding: 18px 45px;
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            border: 2px solid var(--deep-forest);
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--sage-green);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+        .cta-button span { position: relative; z-index: 2; }
+        .cta-button:hover::before { left: 0; }
+        .cta-button:hover { border-color: var(--sage-green); color: var(--cream); }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --cream: #faf7f0;
-      --warm-beige: #f5f1e8;
-      --sage-green: #9caf88;
-      --deep-forest: #4a5d3a;
-      --soft-coral: #d4a574;
-      --rich-burgundy: #8b4a4a;
-      --charcoal: #2c2c2c;
-      --soft-gold: #c9a96e;
-    }
-    body {
-      font-family: 'Crimson Text', serif;
-      line-height: 1.6;
-      color: var(--charcoal);
-      background: var(--cream);
-      min-height: 100vh;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; }
-    header { padding: 40px 0 60px; text-align: center; position: relative; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--cream);
+            border: 2px solid var(--sage-green);
+            position: relative;
+        }
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid var(--soft-coral);
+            pointer-events: none;
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            margin-bottom: 15px;
+        }
+        .feature-description {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            max-width: 100%;
+            margin: 60px auto 0;
+            text-align: center;
+        }
+        .step { flex: 1; text-align: center; position: relative; max-width: 300px; margin: 0 auto; }
+        .step-number {
+            width: 80px; height: 80px;
+            margin: 0 auto 30px;
+            background: var(--deep-forest);
+            color: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            border: 3px solid var(--soft-gold);
+        }
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            margin-bottom: 15px;
+        }
+        .step-description { font-size: 1.1rem; color: var(--charcoal); line-height: 1.6; }
 
-    /* Hanging Christmas Bulbs */
-    .bulbs {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 20px;
-    }
-    .bulbs img {
-      width: 180px;
-      display: block;
-      margin: 0 auto;
-      animation: sway 3s ease-in-out infinite alternate;
-    }
-    @keyframes sway {
-      0% { transform: rotate(-4deg); }
-      100% { transform: rotate(4deg); }
-    }
+        .newsletter-section {
+            background: var(--warm-beige);
+            border: 4px double var(--deep-forest);
+            padding: 60px 50px;
+            text-align: center;
+            position: relative;
+            margin: 80px 0;
+        }
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--sage-green);
+            pointer-events: none;
+        }
+        .newsletter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            margin-bottom: 20px;
+        }
+        .newsletter-subtitle {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .email-form { display: flex; justify-content: center; gap: 15px; max-width: 500px; margin: 0 auto; }
+        .email-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid var(--sage-green);
+            background: var(--cream);
+            font-size: 1rem;
+            font-family: 'Crimson Text', serif;
+            color: var(--charcoal);
+        }
+        .email-input:focus {
+            outline: none;
+            border-color: var(--deep-forest);
+            box-shadow: 0 0 0 2px rgba(74, 93, 58, 0.2);
+        }
+        .submit-btn {
+            background: var(--rich-burgundy);
+            color: var(--cream);
+            padding: 15px 30px;
+            border: 2px solid var(--rich-burgundy);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover { background: var(--cream); color: var(--rich-burgundy); }
+        .newsletter-note { margin-top: 25px; font-size: 0.9rem; color: var(--sage-green); font-style: italic; }
 
-    .brand-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      color: var(--deep-forest);
-      margin-bottom: 15px;
-      letter-spacing: 3px;
-      position: relative;
-    }
+        footer { background: var(--deep-forest); color: var(--cream); padding: 50px 0 30px; text-align: center; border-top: 3px solid var(--soft-gold); }
+        .footer-ornament {
+            width: 150px;
+            height: 30px;
+            margin: 0 auto 30px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 30"><path d="M10 15 Q75 5 140 15" stroke="%23c9a96e" stroke-width="2" fill="none"/><circle cx="25" cy="12" r="2" fill="%23c9a96e"/><circle cx="75" cy="15" r="3" fill="%23c9a96e"/><circle cx="125" cy="12" r="2" fill="%23c9a96e"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+        .footer-links { margin: 20px 0; display: flex; justify-content: center; gap: 40px; }
+        .footer-links a { color: var(--cream); text-decoration: none; font-size: 1rem; position: relative; transition: color 0.3s ease; }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--soft-gold);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--soft-gold); }
+        .footer-links a:hover::after { width: 100%; }
 
-    .tagline {
-      font-size: 1.3rem;
-      color: var(--sage-green);
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: 1px;
-    }
-
-    /* Sparkle Effect (multiple twinkles) */
-    .sparkle {
-      position: relative;
-      display: inline-block;
-    }
-    .sparkle span {
-      position: absolute;
-      font-size: 1.2rem;
-      animation: twinkle 2s infinite ease-in-out;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.3); }
-    }
-
-    /* Random sparkle positions */
-    .sparkle span:nth-child(1) { top: -10px; left: -15px; animation-delay: 0s; }
-    .sparkle span:nth-child(2) { top: -20px; right: -20px; animation-delay: 0.5s; }
-    .sparkle span:nth-child(3) { bottom: -15px; left: -10px; animation-delay: 1s; }
-    .sparkle span:nth-child(4) { bottom: -20px; right: -15px; animation-delay: 1.5s; }
-
-    /* Feature icon size bump */
-    .feature-icon img {
-      transform: scale(1.3);
-    }
-
-    /* (keeping rest of your original styles) */
-    .section { margin: 100px 0; position: relative; }
-    .ornate-box {
-      background: var(--warm-beige);
-      border: 3px solid var(--sage-green);
-      padding: 60px 50px;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(74, 93, 58, 0.1);
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: var(--deep-forest);
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
-    }
-    .hero-text { font-size: 1.4rem; text-align: center; margin: 0 auto 50px; max-width: 700px; }
-    .cta-button {
-      background: var(--deep-forest);
-      color: var(--cream);
-      padding: 18px 45px;
-      font-size: 1.1rem;
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      border: 2px solid var(--deep-forest);
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: var(--sage-green);
-      transition: left 0.3s ease;
-      z-index: 1;
-    }
-    .cta-button span { position: relative; z-index: 2; }
-    .cta-button:hover::before { left: 0; }
-    .cta-button:hover { border-color: var(--sage-green); }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 50px;
-      margin-top: 60px;
-    }
-    .feature-item { text-align: center; padding: 40px 30px; background: var(--cream); border: 2px solid var(--sage-green); position: relative; }
-    .feature-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--deep-forest); }
-    .feature-description { font-size: 1.1rem; }
-  </style>
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .brand-title { font-size: 2.5rem; }
+            .ornate-box { padding: 40px 30px; }
+            .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .steps-container { flex-direction: column; gap: 40px; }
+            .email-form { flex-direction: column; gap: 15px; }
+            .footer-links { flex-direction: column; gap: 20px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="bulbs sparkle">
-        <img src="Images/Christmas Bulbs.png" alt="Christmas Bulbs">
-        <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
-      </div>
-      <h1 class="brand-title">Magic Mail Co.</h1>
-      <p class="tagline">Real Connections, Magical Conversations</p>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="ornate-box">
-          <h2 class="section-title">Where Wonder Lives</h2>
-          <p class="hero-text">
-            Thoughtful conversations between children and their most cherished magical friends.
-            Each exchange is a doorway to imagination, creating treasured moments that families hold dear.
-          </p>
-          <div style="text-align: center;">
-            <a href="#signup" class="cta-button"><span>Begin the Journey</span></a>
-          </div>
+    <header>
+        <div class="container">
+            <div class="header-ornament"></div>
+            <h1 class="brand-title">Magic Mail Co.</h1>
+            <p class="tagline">Real Connections, Magical Conversations</p>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">The Magic We Create</h2>
-        <div class="features-grid">
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/stars.png" alt="Personalized Wonder">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="ornate-box">
+                    <h2 class="section-title">Where Wonder Lives</h2>
+                    <p class="hero-text">
+                        Thoughtful conversations between children and their most cherished magical friends. 
+                        Each exchange is a doorway to imagination, creating treasured moments that families hold dear.
+                    </p>
+                    <div style="text-align: center;">
+                        <a href="#signup" class="cta-button"><span>Begin the Journey</span></a>
+                    </div>
+                </div>
             </div>
-            <h3 class="feature-title">Personalized Wonder</h3>
-            <p class="feature-description">Every conversation is carefully tailored to your child's unique personality, age, and interests.</p>
-          </div>
+        </section>
 
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/Olive Branch.png" alt="Gentle Guidance">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">The Magic We Create</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/stars.png"  alt="Personalized Wonder"></div>
+                        <h3 class="feature-title">Personalized Wonder</h3>
+                        <p class="feature-description">Every conversation is carefully tailored to your child's unique personality, age, and interests.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/Olive Branch.png" alt="Gentle Guidance"></div>
+                        <h3 class="feature-title">Gentle Guidance</h3>
+                        <p class="feature-description">All interactions are lovingly supervised, ensuring safe and meaningful connections.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/Scroll.png"  alt="Treasured Keepsakes"></div>
+                        <h3 class="feature-title">Treasured Keepsakes</h3>
+                        <p class="feature-description">Beautiful conversation memories preserved for your family to cherish forever.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/wand.png" alt="Seasonal Magic"></div>
+                        <h3 class="feature-title">Seasonal Magic</h3>
+                        <p class="feature-description">Connect with beloved characters throughout the year, from holiday magic to everyday wonder.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/heart.png"  alt="Thoughtful Insights"></div>
+                        <h3 class="feature-title">Thoughtful Insights</h3>
+                        <p class="feature-description">Discover new depths to your child's imagination through their magical conversations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><img src="Images/home.png" s alt="Premium Experience"></div>
+                        <h3 class="feature-title">Premium Experience</h3>
+                        <p class="feature-description">An elegant, refined platform designed with the utmost care for discerning families.</p>
+                    </div>
+                </div>
             </div>
-            <h3 class="feature-title">Gentle Guidance</h3>
-            <p class="feature-description">All interactions are lovingly supervised, ensuring safe and meaningful connections.</p>
-          </div>
+        </section>
 
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/Scroll.png" alt="Treasured Keepsakes">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+        <section class="section">
+            <div class="container">
+                <div class="ornate-box">
+                    <h2 class="section-title">How Magic Unfolds</h2>
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">I</div>
+                            <h3 class="step-title">Create Your Family</h3>
+                            <p class="step-description">Establish your elegant family account with personalized details for each child.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">II</div>
+                            <h3 class="step-title">Begin Conversations</h3>
+                            <p class="step-description">Your child enters a beautifully designed space to connect with magical friends.</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">III</div>
+                            <h3 class="step-title">Cherish the Moments</h3>
+                            <p class="step-description">Receive thoughtful summaries and insights about your child's magical experiences.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="feature-title">Treasured Keepsakes</h3>
-            <p class="feature-description">Beautiful conversation memories preserved for your family to cherish forever.</p>
-          </div>
+        </section>
 
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/wand.png" alt="Seasonal Magic">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+        <section class="newsletter-section" id="signup">
+            <div class="container">
+                <h3 class="newsletter-title">Join Our Exclusive Circle</h3>
+                <p class="newsletter-subtitle">Be among the first families invited to experience our magical world.</p>
+                <form class="email-form" action="https://formspree.io/f/mjkopplw" method="POST">
+                    <input type="email" name="email" class="email-input" placeholder="Your email address" required>
+                    <input type="hidden" name="_next" value="https://magicmailco.com">
+                    <input type="hidden" name="_subject" value="Exclusive Circle Request - Magic Mail Co.">
+                    <button type="submit" class="submit-btn">Request Invitation</button>
+                </form>
+                <p class="newsletter-note">Thoughtfully curated for exceptional families</p>
             </div>
-            <h3 class="feature-title">Seasonal Magic</h3>
-            <p class="feature-description">Connect with beloved characters throughout the year, from holiday magic to everyday wonder.</p>
-          </div>
+        </section>
+    </main>
 
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/heart.png" alt="Thoughtful Insights">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+    <footer>
+        <div class="container">
+            <div class="footer-ornament"></div>
+            <p>&copy; 2025 Magic Mail Co. Creating wonder for cherished families.</p>
+            <div class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="mailto:hello@magicmailco.com">Contact</a>
             </div>
-            <h3 class="feature-title">Thoughtful Insights</h3>
-            <p class="feature-description">Discover new depths to your child's imagination through their magical conversations.</p>
-          </div>
-
-          <div class="feature-item sparkle">
-            <div class="feature-icon">
-              <img src="Images/home.png" alt="Premium Experience">
-              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
-            </div>
-            <h3 class="feature-title">Premium Experience</h3>
-            <p class="feature-description">An elegant, refined platform designed with the utmost care for discerning families.</p>
-          </div>
         </div>
-      </div>
-    </section>
-  </main>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+    </script>
 </body>
 </html>
