@@ -146,13 +146,15 @@
             pointer-events: none;
         }
         .feature-icon {
-            width: 160px;
-            height: 160px;
+            width: 200px;
+            height: 200px;
             margin: 0 auto 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: transparent;
+            animation: sway 4s ease-in-out infinite;
+            transform-origin: top center; /* makes it swing from the top */
         }
         .feature-icon img {
             max-width: 100%;
@@ -318,7 +320,7 @@
     <header>
         <div class="container">
             <div class="header-ornament"></div>
-            <img src="images/Christmas Bulbs.png" alt="Christmas Bulbs" class="bulbs">
+            <img src="Images/Christmas Bulbs.png" alt="Christmas Bulbs" class="bulbs">
             <h1 class="brand-title">Magic Mail Co.</h1>
             <p class="tagline">Real Connections, Magical Conversations</p>
         </div>
