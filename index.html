@@ -3,210 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magic Mail Co.</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background-color: #fffaf5;
-      color: #333;
-      text-align: center;
-    }
+  <title>Magic Mail Co. - Real Connections, Magical Conversations</title>
+  <meta name="description" content="Elegant magical conversations between children and beloved characters. Creating wonder through meaningful connections.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-    header {
-      padding: 40px 0 20px;
-      background: linear-gradient(180deg, #c2185b, #d81b60);
-      color: white;
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cream: #faf7f0;
+      --warm-beige: #f5f1e8;
+      --sage-green: #9caf88;
+      --deep-forest: #4a5d3a;
+      --soft-coral: #d4a574;
+      --rich-burgundy: #8b4a4a;
+      --charcoal: #2c2c2c;
+      --soft-gold: #c9a96e;
+    }
+    body {
+      font-family: 'Crimson Text', serif;
+      line-height: 1.6;
+      color: var(--charcoal);
+      background: var(--cream);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; }
+    header { padding: 40px 0 60px; text-align: center; position: relative; }
+
+    /* Hanging Christmas Bulbs */
+    .bulbs {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .bulbs img {
+      width: 180px;
+      display: block;
+      margin: 0 auto;
+      animation: sway 3s ease-in-out infinite alternate;
+    }
+    @keyframes sway {
+      0% { transform: rotate(-4deg); }
+      100% { transform: rotate(4deg); }
     }
 
     .brand-title {
-      font-size: 3rem;
-      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--deep-forest);
+      margin-bottom: 15px;
+      letter-spacing: 3px;
+      position: relative;
     }
 
     .tagline {
-      font-size: 1.25rem;
-      margin: 10px 0 0;
+      font-size: 1.3rem;
+      color: var(--sage-green);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 1px;
     }
 
-    .bulbs {
-      display: block;
-      margin: 0 auto 20px;
-      width: 220px; /* slightly larger */
-      animation: sway 4s ease-in-out infinite;
-      transform-origin: top center;
-    }
-
-    @keyframes sway {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(3deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-3deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    .section {
-      margin: 60px 0;
-      padding: 40px 20px;
-    }
-
-    .hero-box {
-      background: white;
-      border: 2px solid #c2185b;
-      border-radius: 16px;
+    /* Sparkle Effect (multiple twinkles) */
+    .sparkle {
+      position: relative;
       display: inline-block;
-      padding: 40px 60px;
-      margin-top: 30px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
     }
-
-    .hero-box h2 {
-      margin: 0;
-      font-size: 2rem;
-      color: #c2185b;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-
-    .feature {
-      width: 240px;
-      text-align: center;
-    }
-
-    .feature-icon {
-      position: relative;
-      width: 100px; 
-      height: 100px;
-      margin: 0 auto 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .feature-icon img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      z-index: 2;
-      position: relative;
-    }
-
-    /* twinkle sparkles */
-    .twinkle {
+    .sparkle span {
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0;
-      animation: twinkle 3s infinite;
+      font-size: 1.2rem;
+      animation: twinkle 2s infinite ease-in-out;
+      opacity: 0.8;
+      pointer-events: none;
     }
-
-    .twinkle:nth-child(2) {
-      top: 15%;
-      left: 20%;
-      animation-delay: 0.5s;
-    }
-
-    .twinkle:nth-child(3) {
-      top: 30%;
-      right: 15%;
-      animation-delay: 1.2s;
-    }
-
-    .twinkle:nth-child(4) {
-      bottom: 20%;
-      left: 25%;
-      animation-delay: 2s;
-    }
-
-    .twinkle:nth-child(5) {
-      bottom: 25%;
-      right: 20%;
-      animation-delay: 2.5s;
-    }
-
     @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: 1; transform: scale(1.2); }
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.3); }
     }
+
+    /* Random sparkle positions */
+    .sparkle span:nth-child(1) { top: -10px; left: -15px; animation-delay: 0s; }
+    .sparkle span:nth-child(2) { top: -20px; right: -20px; animation-delay: 0.5s; }
+    .sparkle span:nth-child(3) { bottom: -15px; left: -10px; animation-delay: 1s; }
+    .sparkle span:nth-child(4) { bottom: -20px; right: -15px; animation-delay: 1.5s; }
+
+    /* Feature icon size bump */
+    .feature-icon img {
+      transform: scale(1.3);
+    }
+
+    /* (keeping rest of your original styles) */
+    .section { margin: 100px 0; position: relative; }
+    .ornate-box {
+      background: var(--warm-beige);
+      border: 3px solid var(--sage-green);
+      padding: 60px 50px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(74, 93, 58, 0.1);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--deep-forest);
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .hero-text { font-size: 1.4rem; text-align: center; margin: 0 auto 50px; max-width: 700px; }
+    .cta-button {
+      background: var(--deep-forest);
+      color: var(--cream);
+      padding: 18px 45px;
+      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      border: 2px solid var(--deep-forest);
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--sage-green);
+      transition: left 0.3s ease;
+      z-index: 1;
+    }
+    .cta-button span { position: relative; z-index: 2; }
+    .cta-button:hover::before { left: 0; }
+    .cta-button:hover { border-color: var(--sage-green); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 50px;
+      margin-top: 60px;
+    }
+    .feature-item { text-align: center; padding: 40px 30px; background: var(--cream); border: 2px solid var(--sage-green); position: relative; }
+    .feature-title { font-size: 1.5rem; margin-bottom: 15px; color: var(--deep-forest); }
+    .feature-description { font-size: 1.1rem; }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <img src="Images/Christmas Bulbs.png" alt="Christmas Bulbs" class="bulbs">
+      <div class="bulbs sparkle">
+        <img src="Images/Christmas Bulbs.png" alt="Christmas Bulbs">
+        <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+      </div>
       <h1 class="brand-title">Magic Mail Co.</h1>
       <p class="tagline">Real Connections, Magical Conversations</p>
     </div>
   </header>
 
-  <section class="section">
-    <div class="hero-box">
-      <h2>Where Wonder Lives</h2>
-    </div>
-  </section>
-
-  <section class="section features">
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/stars.png" alt="Personalized Wonder">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="ornate-box">
+          <h2 class="section-title">Where Wonder Lives</h2>
+          <p class="hero-text">
+            Thoughtful conversations between children and their most cherished magical friends.
+            Each exchange is a doorway to imagination, creating treasured moments that families hold dear.
+          </p>
+          <div style="text-align: center;">
+            <a href="#signup" class="cta-button"><span>Begin the Journey</span></a>
+          </div>
+        </div>
       </div>
-      <h3>Personalized Wonder</h3>
-      <p>Every reply is tailored with care and magic.</p>
-    </div>
+    </section>
 
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/Olive Branch.png" alt="Gentle Guidance">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
-      </div>
-      <h3>Gentle Guidance</h3>
-      <p>Kind, thoughtful, and encouraging words for kids.</p>
-    </div>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">The Magic We Create</h2>
+        <div class="features-grid">
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/stars.png" alt="Personalized Wonder">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Personalized Wonder</h3>
+            <p class="feature-description">Every conversation is carefully tailored to your child's unique personality, age, and interests.</p>
+          </div>
 
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/Scroll.png" alt="Treasured Keepsakes">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
-      </div>
-      <h3>Treasured Keepsakes</h3>
-      <p>Beautifully written notes to cherish forever.</p>
-    </div>
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/Olive Branch.png" alt="Gentle Guidance">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Gentle Guidance</h3>
+            <p class="feature-description">All interactions are lovingly supervised, ensuring safe and meaningful connections.</p>
+          </div>
 
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/wand.png" alt="Seasonal Magic">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
-      </div>
-      <h3>Seasonal Magic</h3>
-      <p>Capturing the wonder of every holiday moment.</p>
-    </div>
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/Scroll.png" alt="Treasured Keepsakes">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Treasured Keepsakes</h3>
+            <p class="feature-description">Beautiful conversation memories preserved for your family to cherish forever.</p>
+          </div>
 
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/heart.png" alt="Thoughtful Insights">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
-      </div>
-      <h3>Thoughtful Insights</h3>
-      <p>Warm responses that nurture joy and imagination.</p>
-    </div>
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/wand.png" alt="Seasonal Magic">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Seasonal Magic</h3>
+            <p class="feature-description">Connect with beloved characters throughout the year, from holiday magic to everyday wonder.</p>
+          </div>
 
-    <div class="feature">
-      <div class="feature-icon">
-        <img src="Images/home.png" alt="Premium Experience">
-        <div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div><div class="twinkle"></div>
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/heart.png" alt="Thoughtful Insights">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Thoughtful Insights</h3>
+            <p class="feature-description">Discover new depths to your child's imagination through their magical conversations.</p>
+          </div>
+
+          <div class="feature-item sparkle">
+            <div class="feature-icon">
+              <img src="Images/home.png" alt="Premium Experience">
+              <span>✨</span><span>✨</span><span>✨</span><span>✨</span>
+            </div>
+            <h3 class="feature-title">Premium Experience</h3>
+            <p class="feature-description">An elegant, refined platform designed with the utmost care for discerning families.</p>
+          </div>
+        </div>
       </div>
-      <h3>Premium Experience</h3>
-      <p>Magical, memorable interactions made simple.</p>
-    </div>
-  </section>
+    </section>
+  </main>
 </body>
 </html>
