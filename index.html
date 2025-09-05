@@ -296,12 +296,28 @@
             .email-form { flex-direction: column; gap: 15px; }
             .footer-links { flex-direction: column; gap: 20px; }
         }
+        .bulbs {
+                display: block;
+                margin: 0 auto 20px;
+                width: 600px; /* adjust size as needed */
+                animation: sway 4s ease-in-out infinite;
+                transform-origin: top center; /* makes it swing from the top */
+                }
+
+        @keyframes sway {
+                0% { transform: rotate(0deg); }
+                25% { transform: rotate(3deg); }
+                50% { transform: rotate(0deg); }
+                75% { transform: rotate(-3deg); }
+                100% { transform: rotate(0deg); }
+                        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-ornament"></div>
+            <img src="images/Christmas Bulbs.png" alt="Christmas Bulbs" class="bulbs">
             <h1 class="brand-title">Magic Mail Co.</h1>
             <p class="tagline">Real Connections, Magical Conversations</p>
         </div>
