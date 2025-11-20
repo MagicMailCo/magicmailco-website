@@ -1,2 +1,30 @@
-<h1>SantaChat – Coming Soon</h1>
-<p>We’re setting up your child’s official connection to Santa’s Workshop.</p>
+export default function SantaChat() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-red-50 via-white to-green-50 flex items-center justify-center relative overflow-hidden">
+      {/* Twinkling stars */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-yellow-300 rounded-full animate-pulse"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="text-center z-10 px-4">
+        <h1 className="text-6xl md:text-7xl font-serif text-red-600 mb-4">
+          Coming Soon! 🎅
+        </h1>
+        <p className="text-xl text-gray-700 font-serif">
+          Santa's workshop is getting ready...
+        </p>
+      </div>
+    </div>
+  );
+}
