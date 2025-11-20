@@ -3,7 +3,7 @@ export default function SantaChat() {
     <div className="min-h-screen bg-gradient-to-b from-red-50 via-white to-green-50 relative overflow-hidden">
       {/* Twinkling stars */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse"
@@ -16,260 +16,64 @@ export default function SantaChat() {
           />
         ))}
       </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SantaChat | Magic Mail Co.</title>
-    <meta name="description" content="SantaChat is being crafted with the same refined warmth as the Magic Mail Co. homepage.">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --cream: #faf7f0;
-            --warm-beige: #f5f1e8;
-            --sage-green: #9caf88;
-            --deep-forest: #4a5d3a;
-            --soft-coral: #d4a574;
-            --rich-burgundy: #8b4a4a;
-            --charcoal: #2c2c2c;
-            --soft-gold: #c9a96e;
-        }
-        body {
-            font-family: 'Crimson Text', serif;
-            line-height: 1.6;
-            color: var(--charcoal);
-            background: radial-gradient(circle at 20% 20%, rgba(156, 175, 136, 0.08), transparent 30%),
-                        radial-gradient(circle at 80% 0%, rgba(212, 165, 116, 0.1), transparent 25%),
-                        var(--cream);
-            min-height: 100vh;
-        }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; position: relative; }
-        header { padding: 40px 0 20px; text-align: center; position: relative; }
-        .brand-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
-            font-weight: 300;
-            color: var(--deep-forest);
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-            position: relative;
-        }
-        .brand-title::before, .brand-title::after {
-            content: '';
-            position: absolute;
-            height: 1px;
-            width: 140px;
-            background: linear-gradient(90deg, transparent, var(--soft-gold), transparent);
-            top: 50%;
-        }
-        .brand-title::before { left: -170px; }
-        .brand-title::after { right: -170px; }
-        .tagline {
-            font-size: 1.2rem;
-            color: var(--sage-green);
-            font-style: italic;
-            letter-spacing: 1px;
-        }
-        .section { margin: 60px 0 90px; position: relative; }
-        .ornate-box {
-            background: var(--warm-beige);
-            border: 3px solid var(--sage-green);
-            padding: 60px 50px;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(74, 93, 58, 0.12);
-            overflow: hidden;
-        }
-        .ornate-box::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            right: -12px;
-            bottom: -12px;
-            border: 1px solid var(--soft-gold);
-            pointer-events: none;
-        }
-        .ornate-box::after {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(201, 169, 110, 0.25), transparent 70%);
-            top: -40px;
-            right: -40px;
-            opacity: 0.7;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            font-weight: 400;
-            color: var(--deep-forest);
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 2px;
-            background: var(--soft-gold);
-            margin: 18px auto 0;
-        }
-        .hero-text {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto 30px;
-        }
-        .cta-button {
-            background: var(--deep-forest);
-            color: var(--cream);
-            padding: 16px 38px;
-            font-size: 1.05rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            border: 2px solid var(--deep-forest);
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--sage-green);
-            transition: left 0.3s ease;
-            z-index: 1;
-        }
-        .cta-button span { position: relative; z-index: 2; }
-        .cta-button:hover::before { left: 0; }
-        .cta-button:hover { border-color: var(--sage-green); color: var(--cream); }
-        .accent-note {
-            font-size: 1rem;
-            color: var(--rich-burgundy);
-            text-align: center;
-            margin-top: 16px;
-            letter-spacing: 0.5px;
-        }
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-        .pillar {
-            background: var(--cream);
-            border: 2px solid var(--sage-green);
-            padding: 28px 24px;
-            position: relative;
-            text-align: center;
-        }
-        .pillar::before {
-            content: '';
-            position: absolute;
-            top: -8px; left: -8px; right: -8px; bottom: -8px;
-            border: 1px solid var(--soft-coral);
-            pointer-events: none;
-        }
-        .pillar-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--deep-forest);
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-        }
-        .pillar-text { color: var(--charcoal); font-size: 1.05rem; line-height: 1.6; }
-        footer {
-            text-align: center;
-            padding: 40px 0 60px;
-            color: var(--deep-forest);
-            font-size: 1rem;
-        }
-        @media (max-width: 768px) {
-            .brand-title { font-size: 3rem; }
-            .ornate-box { padding: 40px 32px; }
-            .section { margin: 40px 0 70px; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1 class="brand-title">Magic Mail Co.</h1>
-            <p class="tagline">Real connections, magical conversations</p>
-        </header>
 
-      {/* Content */}
-      <div className="flex items-center justify-center min-h-screen px-4">
-        <div className="text-center relative z-10 max-w-2xl">
-          {/* Ornate border box */}
-          <div className="bg-white/80 backdrop-blur-sm border-4 border-green-700 rounded-lg shadow-2xl p-12 relative">
-            {/* Inner accent border */}
-            <div className="absolute inset-3 border-2 border-red-400 rounded-md pointer-events-none"></div>
-            
-            {/* Content */}
-            <div className="relative z-10">
-              <h1 className="text-6xl md:text-7xl font-serif text-red-600 mb-6 tracking-wide">
+      {/* Main content */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+        <div className="max-w-2xl w-full">
+          <header className="text-center mb-8">
+            <p className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-2">
+              Magic Mail Co.
+            </p>
+            <h1 className="text-4xl md:text-5xl font-serif text-red-700 mb-3">
+              SantaChat
+            </h1>
+            <p className="text-lg text-green-800 italic">
+              The Official Connection to Santa&apos;s Workshop.
+            </p>
+          </header>
+
+          <div className="bg-white/90 backdrop-blur-sm border-4 border-green-700 rounded-xl shadow-2xl p-8 md:p-10 relative">
+            <div className="absolute inset-3 border-2 border-red-400 rounded-lg pointer-events-none" />
+
+            <div className="relative z-10 text-center">
+              <h2 className="text-2xl md:text-3xl font-serif text-red-600 mb-4">
                 Coming Soon! 🎅
-              </h1>
-              <p className="text-2xl text-gray-700 font-serif italic mb-8">
-                Santa's workshop is getting ready...
+              </h2>
+              <p className="text-base md:text-lg text-gray-700 mb-6">
+                Santa&apos;s workshop is getting ready. Soon, kids will be able to
+                send messages straight to Santa through Magic Mail Co.
               </p>
-              <p className="text-lg text-gray-600 font-serif">
-                Something magical is being prepared at the North Pole
-              </p>
-        <section class="section">
-            <div class="ornate-box">
-                <h2 class="section-title">SantaChat is on its way</h2>
-                <p class="hero-text">
-                    We are crafting a warm, thoughtful space that carries the same timeless elegance as our homepage. Soon, children will share their wishes and receive heartfelt replies from Santa in the signature Magic Mail Co. style.
-                </p>
-                <p class="hero-text">
-                    Expect the familiar palette, refined details, and gentle storytelling that make every interaction feel special.
-                </p>
-                <div style="text-align: center; margin-top: 20px;">
-                    <a class="cta-button" href="/">
-                        <span>Return Home</span>
-                    </a>
-                </div>
-                <p class="accent-note">Launching soon — the elves are adding the finishing touches.</p>
 
-                <div class="pillars">
-                    <div class="pillar">
-                        <h3 class="pillar-title">Elegant Letters</h3>
-                        <p class="pillar-text">Thoughtfully designed responses with the same classic typography and ornate framing you love.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3 class="pillar-title">Caring Voices</h3>
-                        <p class="pillar-text">Gentle, reassuring messaging that keeps the magic alive in every conversation.</p>
-                    </div>
-                    <div class="pillar">
-                        <h3 class="pillar-title">Seamless Experience</h3>
-                        <p class="pillar-text">A familiar layout, calming colors, and intuitive flow inspired directly by our homepage.</p>
-                    </div>
-                </div>
+              <p className="text-sm md:text-base text-gray-600 mb-6">
+                Leave your email and be the first to know when SantaChat launches.
+              </p>
+
+              <form className="flex flex-col items-center gap-3">
+                <input
+                  type="email"
+                  required
+                  placeholder="Parent email address"
+                  className="w-full max-w-xs px-4 py-2 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-full bg-green-700 text-white text-sm md:text-base font-medium hover:bg-green-800 transition"
+                >
+                  Get Early Access
+                </button>
+              </form>
+
+              <p className="mt-4 text-xs text-gray-500">
+                No spam. Just a note from the North Pole when we&apos;re ready.
+              </p>
             </div>
           </div>
+
+          <footer className="mt-8 text-center text-xs text-gray-500">
+            Crafted with care by Magic Mail Co.
+          </footer>
         </div>
       </div>
-        </section>
-
-        <footer>
-            Crafted with care by Magic Mail Co. | Bringing warmth, wonder, and connection
-        </footer>
     </div>
   );
 }
-</body>
-</html>
