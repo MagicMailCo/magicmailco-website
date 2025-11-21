@@ -48,20 +48,26 @@ export default function SantaChat() {
                 Leave your email and be the first to know when SantaChat launches.
               </p>
 
-              <form className="flex flex-col items-center gap-3">
-                <input
-                  type="email"
-                  required
-                  placeholder="Parent email address"
-                  className="w-full max-w-xs px-4 py-2 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-2 rounded-full bg-green-700 text-white text-sm md:text-base font-medium hover:bg-green-800 transition"
-                >
-                  Get Early Access
-                </button>
-              </form>
+            <form
+  action="https://docs.google.com/forms/d/e/1FAIpQLSdtUDDBA_Taf6_4Z6qHgwfddZg0_JHCyCy-U5S2Dc-vQ0PmJg/formResponse"
+  method="POST"
+  target="_blank"
+  className="flex flex-col items-center gap-3"
+>
+  <input
+    type="email"
+    name="entry.1951366368"
+    required
+    placeholder="Parent email address"
+    className="w-full max-w-xs px-4 py-2 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
+  />
+  <button
+    type="submit"
+    className="px-6 py-2 rounded-full bg-green-700 text-white text-sm md:text-base font-medium hover:bg-green-800 transition"
+  >
+    Get Early Access
+  </button>
+</form>
 
               <p className="mt-4 text-xs text-gray-500">
                 No spam. Just a note from the North Pole when we&apos;re ready.
