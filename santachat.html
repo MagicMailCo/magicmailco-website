@@ -1,85 +1,152 @@
-export default function SantaChat() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 via-white to-green-50 relative overflow-hidden">
-      {/* Twinkling stars */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
-            }}
-          />
-        ))}
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SantaChat | Magic Mail Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(to bottom, #fef2f2, #ffffff, #f0fdf4);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .page {
+      max-width: 640px;
+      width: 100%;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      border: 4px solid #166534;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      padding: 32px 24px;
+      position: relative;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 12px;
+      border: 2px solid #f87171;
+      pointer-events: none;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    header .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+    header h1 {
+      margin: 0 0 4px;
+      font-size: 32px;
+      color: #b91c1c;
+    }
+    header p {
+      margin: 0;
+      font-size: 16px;
+      color: #166534;
+      font-style: italic;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #b91c1c;
+      text-align: center;
+    }
+    .text {
+      font-size: 15px;
+      color: #374151;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    form {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    input[type="email"] {
+      width: 100%;
+      max-width: 260px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      background: #166534;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #14532d;
+    }
+    .small {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+    }
+    footer {
+      margin-top: 16px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header>
+        <div class="eyebrow">Magic Mail Co.</div>
+        <h1>SantaChat</h1>
+        <p>The Official Connection to Santa's Workshop.</p>
+      </header>
 
-      {/* Main content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-        <div className="max-w-2xl w-full">
-          <header className="text-center mb-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-2">
-              Magic Mail Co.
-            </p>
-            <h1 className="text-4xl md:text-5xl font-serif text-red-700 mb-3">
-              SantaChat
-            </h1>
-            <p className="text-lg text-green-800 italic">
-              The Official Connection to Santa&apos;s Workshop.
-            </p>
-          </header>
+      <h2>Coming Soon! 🎅</h2>
+      <p class="text">
+        Santa's workshop is getting ready. Soon, kids will be able to send messages straight to Santa through Magic Mail Co.
+      </p>
+      <p class="text">
+        Leave your email and be the first to know when SantaChat launches.
+      </p>
 
-          <div className="bg-white/90 backdrop-blur-sm border-4 border-green-700 rounded-xl shadow-2xl p-8 md:p-10 relative">
-            <div className="absolute inset-3 border-2 border-red-400 rounded-lg pointer-events-none" />
+      <form
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdtUDDBA_Taf6_4Z6qHgwfddZg0_JHCyCy-U5S2Dc-vQ0PmJg/formResponse"
+        method="POST"
+        target="_blank"
+      >
+        <input
+          type="email"
+          name="entry.1951366368"
+          required
+          placeholder="Parent email address"
+        />
+        <button type="submit">Get Early Access</button>
+      </form>
 
-            <div className="relative z-10 text-center">
-              <h2 className="text-2xl md:text-3xl font-serif text-red-600 mb-4">
-                Coming Soon! 🎅
-              </h2>
-              <p className="text-base md:text-lg text-gray-700 mb-6">
-                Santa&apos;s workshop is getting ready. Soon, kids will be able to
-                send messages straight to Santa through Magic Mail Co.
-              </p>
-
-              <p className="text-sm md:text-base text-gray-600 mb-6">
-                Leave your email and be the first to know when SantaChat launches.
-              </p>
-
-            <form
-  action="https://docs.google.com/forms/d/e/1FAIpQLSdtUDDBA_Taf6_4Z6qHgwfddZg0_JHCyCy-U5S2Dc-vQ0PmJg/formResponse"
-  method="POST"
-  target="_blank"
-  className="flex flex-col items-center gap-3"
->
-  <input
-    type="email"
-    name="entry.1951366368"
-    required
-    placeholder="Parent email address"
-    className="w-full max-w-xs px-4 py-2 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-red-400"
-  />
-  <button
-    type="submit"
-    className="px-6 py-2 rounded-full bg-green-700 text-white text-sm md:text-base font-medium hover:bg-green-800 transition"
-  >
-    Get Early Access
-  </button>
-</form>
-
-              <p className="mt-4 text-xs text-gray-500">
-                No spam. Just a note from the North Pole when we&apos;re ready.
-              </p>
-            </div>
-          </div>
-
-          <footer className="mt-8 text-center text-xs text-gray-500">
-            Crafted with care by Magic Mail Co.
-          </footer>
-        </div>
-      </div>
+      <p class="small">
+        No spam. Just a note from the North Pole when we're ready.
+      </p>
     </div>
-  );
-}
+
+    <footer>Crafted with care by Magic Mail Co.</footer>
+  </div>
+</body>
+</html>
