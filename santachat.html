@@ -1,152 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>SantaChat | Magic Mail Co.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(to bottom, #fef2f2, #ffffff, #f0fdf4);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .page {
-      max-width: 640px;
-      width: 100%;
-      padding: 24px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
-      border: 4px solid #166534;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      padding: 32px 24px;
-      position: relative;
-    }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 12px;
-      border: 2px solid #f87171;
-      pointer-events: none;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    header .eyebrow {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #6b7280;
-      margin-bottom: 4px;
-    }
-    header h1 {
-      margin: 0 0 4px;
-      font-size: 32px;
-      color: #b91c1c;
-    }
-    header p {
-      margin: 0;
-      font-size: 16px;
-      color: #166534;
-      font-style: italic;
-    }
-    h2 {
-      margin: 0 0 12px;
-      font-size: 22px;
-      color: #b91c1c;
-      text-align: center;
-    }
-    .text {
-      font-size: 15px;
-      color: #374151;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    form {
-      margin-top: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    input[type="email"] {
-      width: 100%;
-      max-width: 260px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid #d1d5db;
-      font-size: 14px;
-    }
-    button {
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: none;
-      background: #166534;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #14532d;
-    }
-    .small {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #6b7280;
-      text-align: center;
-    }
-    footer {
-      margin-top: 16px;
-      font-size: 11px;
-      color: #6b7280;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SantaChat | Magic Mail Co.</title>
+    <meta name="description" content="SantaChat by Magic Mail Co. – the official connection to Santa's workshop.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --cream: #faf7f0;
+            --warm-beige: #f5f1e8;
+            --sage-green: #9caf88;
+            --deep-forest: #4a5d3a;
+            --soft-coral: #d4a574;
+            --rich-burgundy: #8b4a4a;
+            --charcoal: #2c2c2c;
+            --soft-gold: #c9a96e;
+        }
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--cream);
+            min-height: 100vh;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; }
+        header { padding: 40px 0 20px; text-align: center; position: relative; }
+        .header-ornament { display: none; }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--deep-forest);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        .brand-title::before, .brand-title::after { display: none; }
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--sage-green);
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .section { margin: 40px 0; position: relative; }
+        .ornate-box {
+            background: var(--warm-beige);
+            border: 3px solid var(--sage-green);
+            border-radius: 0;
+            padding: 60px 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(74, 93, 58, 0.1);
+        }
+        .ornate-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid var(--soft-gold);
+            pointer-events: none;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--soft-gold);
+            margin: 20px auto 0;
+        }
+        .hero-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            text-align: center;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .newsletter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .newsletter-subtitle {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 30px;
+            font-style: italic;
+            text-align: center;
+        }
+        .email-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .email-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 12px 18px;
+            border: 2px solid var(--sage-green);
+            background: var(--cream);
+            font-size: 1rem;
+            font-family: 'Crimson Text', serif;
+            color: var(--charcoal);
+        }
+        .email-input:focus {
+            outline: none;
+            border-color: var(--deep-forest);
+            box-shadow: 0 0 0 2px rgba(74, 93, 58, 0.2);
+        }
+        .submit-btn {
+            background: var(--rich-burgundy);
+            color: var(--cream);
+            padding: 12px 26px;
+            border: 2px solid var(--rich-burgundy);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .submit-btn:hover { background: var(--cream); color: var(--rich-burgundy); }
+        .newsletter-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--sage-green);
+            font-style: italic;
+            text-align: center;
+        }
+        footer {
+            background: var(--deep-forest);
+            color: var(--cream);
+            padding: 40px 0 30px;
+            text-align: center;
+            border-top: 3px solid var(--soft-gold);
+        }
+        .footer-ornament {
+            width: 150px;
+            height: 30px;
+            margin: 0 auto 20px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 30"><path d="M10 15 Q75 5 140 15" stroke="%23c9a96e" stroke-width="2" fill="none"/><circle cx="25" cy="12" r="2" fill="%23c9a96e"/><circle cx="75" cy="15" r="3" fill="%23c9a96e"/><circle cx="125" cy="12" r="2" fill="%23c9a96e"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+        .footer-links {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--soft-gold);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover { color: var(--soft-gold); }
+        .footer-links a:hover::after { width: 100%; }
+
+        @media (max-width: 768px) {
+            .brand-title { font-size: 3rem; }
+            .ornate-box { padding: 40px 30px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="page">
-    <div class="card">
-      <header>
-        <div class="eyebrow">Magic Mail Co.</div>
-        <h1>SantaChat</h1>
-        <p>The Official Connection to Santa's Workshop.</p>
-      </header>
+    <header>
+        <div class="container">
+            <h1 class="brand-title">Magic Mail Co.</h1>
+            <p class="tagline">Real Connections, Magical Conversations</p>
+        </div>
+    </header>
 
-      <h2>Coming Soon! 🎅</h2>
-      <p class="text">
-        Santa's workshop is getting ready. Soon, kids will be able to send messages straight to Santa through Magic Mail Co.
-      </p>
-      <p class="text">
-        Leave your email and be the first to know when SantaChat launches.
-      </p>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="ornate-box">
+                    <h2 class="section-title">SantaChat</h2>
 
-      <form
-        action="https://docs.google.com/forms/d/e/1FAIpQLSdtUDDBA_Taf6_4Z6qHgwfddZg0_JHCyCy-U5S2Dc-vQ0PmJg/formResponse"
-        method="POST"
-        target="_blank"
-      >
-        <input
-          type="email"
-          name="entry.1951366368"
-          required
-          placeholder="Parent email address"
-        />
-        <button type="submit">Get Early Access</button>
-      </form>
+                    <p class="hero-text">
+                        The Official Connection to Santa's Workshop.
+                    </p>
 
-      <p class="small">
-        No spam. Just a note from the North Pole when we're ready.
-      </p>
-    </div>
+                    <p class="hero-text">
+                        Santa's workshop is getting ready. Soon, kids will be able to send messages
+                        straight to Santa through Magic Mail Co.
+                    </p>
 
-    <footer>Crafted with care by Magic Mail Co.</footer>
-  </div>
+                    <p class="hero-text">
+                        Leave your email and be the first to know when SantaChat launches.
+                    </p>
+
+                    <div style="margin-top: 30px;">
+                        <h3 class="newsletter-title">Get Early Access</h3>
+                        <p class="newsletter-subtitle">
+                            Be among the first families invited to try SantaChat.
+                        </p>
+
+                        <form
+                            class="email-form"
+                            action="https://formspree.io/f/mjkopplw"
+                            method="POST"
+                        >
+                            <input
+                                type="email"
+                                name="email"
+                                class="email-input"
+                                placeholder="Parent email address"
+                                required
+                            >
+                            <input type="hidden" name="_subject" value="SantaChat Early Access Request - Magic Mail Co.">
+                            <input type="hidden" name="_next" value="https://magicmailco.com/santachat">
+                            <button type="submit" class="submit-btn">Get Early Access</button>
+                        </form>
+
+                        <p class="newsletter-note">
+                            No spam. Just a note from the North Pole when we're ready.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-ornament"></div>
+            <p>&copy; 2025 Magic Mail Co. Creating wonder for cherished families.</p>
+            <div class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="mailto:hello@magicmailco.com">Contact</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
