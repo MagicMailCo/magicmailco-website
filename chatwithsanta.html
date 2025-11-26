@@ -1,1 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat with Santa| Magic Mail Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --mmc-bg: #f6f1e9;
+      --mmc-green: #6e7a52;
+      --mmc-deep-green: #505b39;
+      --mmc-red: #8a4441;
+      --mmc-gold: #c8a46a;
+      --mmc-text: #3c3a35;
+      --mmc-muted: #9a968a;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+        -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--mmc-bg);
+      color: var(--mmc-text);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .card {
+      max-width: 720px;
+      width: 100%;
+      background: #fdfaf5;
+      border-radius: 18px;
+      border: 1px solid rgba(200, 164, 106, 0.35);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+      padding: 3.5rem 2.75rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      border: 1px solid rgba(200, 164, 106, 0.45);
+      pointer-events: none;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-size: 3rem;
+      letter-spacing: 0.04em;
+      margin: 0 0 0.75rem;
+      color: var(--mmc-green);
+    }
+
+    .divider {
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        var(--mmc-gold),
+        transparent
+      );
+      margin: 0 auto 1.5rem;
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mmc-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-heading {
+      font-family: "Cormorant Garamond", "Times New Roman", serif;
+      font-size: 1.6rem;
+      color: var(--mmc-deep-green);
+      margin: 2.25rem 0 0.75rem;
+    }
+
+    .section-subtitle {
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--mmc-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .benefits {
+      margin: 0 auto 2.25rem;
+      max-width: 520px;
+      text-align: left;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--mmc-text);
+    }
+
+    .benefits ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+    }
+
+    .benefits li {
+      margin-bottom: 0.4rem;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+
+    .benefits li::before {
+      content: "★";
+      position: absolute;
+      left: 0;
+      top: 0.05rem;
+      font-size: 0.75rem;
+      color: var(--mmc-gold);
+    }
+
+    .cta-wrapper {
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .mmc-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 2.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 79, 70, 0.85);
+      background: linear-gradient(
+        135deg,
+        #8a4441,
+        #7a3a38
+      );
+      color: #fdf8f2;
+      font-size: 0.98rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.16);
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background 0.12s ease;
+    }
+
+    .mmc-button span {
+      margin-left: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .mmc-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+      background: linear-gradient(
+        135deg,
+        #914946,
+        #83403d
+      );
+    }
+
+    .mmc-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.16);
+    }
+
+    .fine-print {
+      font-size: 0.82rem;
+      color: var(--mmc-muted);
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .room-link {
+      margin-top: 1.75rem;
+      font-size: 0.9rem;
+      color: var(--mmc-deep-green);
+    }
+
+    .room-link a {
+      color: var(--mmc-red);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(138, 68, 65, 0.35);
+      padding-bottom: 1px;
+    }
+
+    .room-link a:hover {
+      border-bottom-color: rgba(138, 68, 65, 0.75);
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 2.25rem 1.25rem;
+      }
+
+      .card {
+        padding: 2.4rem 1.7rem;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+
+      .section-heading {
+        font-size: 1.45rem;
+      }
+
+      .mmc-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card" aria-labelledby="santachat-title">
+      <div class="tagline">Magic Mail Co. Presents</div>
+
+      <h1 id="santachat-title">Chat with Santa</h1>
+      <div class="divider"></div>
+
+      <p class="lead">
+        The Official Connection to Santa's Workshop.
+        A private, parent-guided messaging room where your child can send
+        real messages to Santa—safely, securely, and with a touch of Christmas magic.
+      </p>
+
+      <h2 class="section-heading">Chat with Santa Is Now Open</h2>
+      <p class="section-subtitle">
+        A calm, invitation-only space for families who want the magic without the noise.
+      </p>
+
+      <div class="benefits">
+        <strong>Your access includes:</strong>
+        <ul>
+          <li>The private, password-protected Chat with Santa</li>
+          <li>Parent-only controls and a secret password just for you</li>
+          <li>Santa replies to your child’s messages</li>
+          <li>Unlimited messaging through Christmas Eve</li>
+        </ul>
+      </div>
+
+      <div class="cta-wrapper">
+        <!-- TODO: Replace the href below with your real Gumroad product URL -->
+        <a
+          class="mmc-button"
+          href="https://chatwithsanta.gumroad.com/l/zzgwh?_gl=1*1gcx9cf*_ga*NjIwOTQzNjE1LjE3NjM2OTQ2NTM.*_ga_6LJN6D94N6*czE3NjQxMjg5MDEkbzckZzEkdDE3NjQxMzEwMjQkajQzJGwwJGgw"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Instant Access<span>↗</span>
+        </a>
+      </div>
+
+      <p class="fine-print">
+        Secure checkout is handled by Gumroad. Your private Chat with Santa link
+        and parent password are delivered to your inbox immediately after purchase.
+      </p>
+
+      <div class="room-link">
+        Already purchased?  
+        <a href="/santachat-room">Enter Chat with Santa</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
