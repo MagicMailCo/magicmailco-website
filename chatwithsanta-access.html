@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SantaChat Room | Magic Mail Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <style>
+    :root {
+      --mmc-bg: #f6f1e9;
+      --mmc-green: #6e7a52;
+      --mmc-deep-green: #505b39;
+      --mmc-gold: #c8a46a;
+      --mmc-red: #8a4441;
+      --mmc-text: #3c3a35;
+      --mmc-muted: #9a968a;
+    }
+
+    body {
+      margin: 0;
+      background: var(--mmc-bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      color: var(--mmc-text);
+    }
+
+    .wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .title {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3rem;
+      color: var(--mmc-green);
+      margin-bottom: 0.5rem;
+    }
+
+    .divider {
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--mmc-gold), transparent);
+      margin: 0 auto 2rem;
+    }
+
+    /* Password box */
+    #password-gate {
+      text-align: center;
+      background: #fdfaf5;
+      padding: 2rem;
+      border: 1px solid rgba(200, 164, 106, 0.45);
+      border-radius: 18px;
+    }
+
+    input[type="password"] {
+      padding: 0.8rem;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 1px solid var(--mmc-muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.7rem 2rem;
+      font-size: 0.95rem;
+      background: var(--mmc-red);
+      border: none;
+      border-radius: 999px;
+      color: white;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background: #7a3a38;
+    }
+
+    /* Hide ChatBase actions inside the iframe container */
+    #chatbase-container .cb-message-actions,
+    #chatbase-container .cb-message-action,
+    #chatbase-container .cb-like-dislike,
+    #chatbase-container .cb-retry,
+    #chatbase-container .cb-copy {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* Chat container styling */
+    #chatbase-container {
+      margin-top: 2rem;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(200, 164, 106, 0.45);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <h1 class="title">SantaChat Room</h1>
+    <div class="divider"></div>
+
+    <!-- Password Gate -->
+    <div id="password-gate">
+      <p style="color: var(--mmc-muted); font-style: italic;">Parents Only • Enter your password to unlock SantaChat</p>
+      <input type="password" id="parent-password" placeholder="Parent Password" />
+      <br />
+      <button onclick="checkPassword()">Enter</button>
+    </div>
+
+    <!-- ChatBase Embed -->
+    <div id="chatbase-container" style="display:none;">
+      <!-- Replace YOUR_IFRAME_ID with your actual ChatBase iframe ID -->
+      <iframe 
+        src="https://www.chatbase.co/chatbot-iframe/5_FijZYe-eAoW7FfBmL3z"
+        width="100%"
+        style="height: 700px; border: none;"
+        frameborder="0">
+      </iframe>
+    </div>
+  </div>
+
+<script>
+  function checkPassword() {
+    const correctPassword = "northpole123"; // replace with your real password
+    const inputPassword = document.getElementById("parent-password").value.trim();
+
+    if (inputPassword === correctPassword) {
+      document.getElementById("password-gate").style.display = "none";
+      document.getElementById("chatbase-container").style.display = "block";
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  }
+</script>
+
+</body>
+</html>
