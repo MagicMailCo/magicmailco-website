@@ -1,190 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SantaChat Room | Magic Mail Co.</title>
+  <meta charset="UTF-8" />
+  <title>SantaChat Room | Magic Mail Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <style>
+    :root {
+      --mmc-bg: #f6f1e9;
+      --mmc-green: #6e7a52;
+      --mmc-deep-green: #505b39;
+      --mmc-gold: #c8a46a;
+      --mmc-red: #8a4441;
+      --mmc-text: #3c3a35;
+      --mmc-muted: #9a968a;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    body {
+      margin: 0;
+      background: var(--mmc-bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      color: var(--mmc-text);
+    }
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    .wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
 
-        :root {
-            --cream: #faf7f0;
-            --warm-beige: #f5f1e8;
-            --sage-green: #9caf88;
-            --deep-forest: #4a5d3a;
-            --soft-gold: #c9a96e;
-            --charcoal: #2c2c2c;
-            --burgundy: #8b4a4a;
-        }
+    .title {
+      text-align: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3rem;
+      color: var(--mmc-green);
+      margin-bottom: 0.5rem;
+    }
 
-        body {
-            background: var(--cream);
-            color: var(--charcoal);
-            font-family: 'Crimson Text', serif;
-        }
+    .divider {
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--mmc-gold), transparent);
+      margin: 0 auto 2rem;
+    }
 
-        /* Password Gate */
-        #password-gate {
-            max-width: 450px;
-            margin: 120px auto;
-            background: var(--warm-beige);
-            border: 3px solid var(--sage-green);
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
+    /* Password box */
+    #password-gate {
+      text-align: center;
+      background: #fdfaf5;
+      padding: 2rem;
+      border: 1px solid rgba(200, 164, 106, 0.45);
+      border-radius: 18px;
+    }
 
-        #password-gate::before {
-            content: '';
-            position: absolute;
-            top: -12px; left: -12px; right: -12px; bottom: -12px;
-            border: 1px solid var(--soft-gold);
-            pointer-events: none;
-        }
+    input[type="password"] {
+      padding: 0.8rem;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 8px;
+      border: 1px solid var(--mmc-muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
 
-        #password-gate h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--deep-forest);
-            margin-bottom: 20px;
-        }
+    button {
+      padding: 0.7rem 2rem;
+      font-size: 0.95rem;
+      background: var(--mmc-red);
+      border: none;
+      border-radius: 999px;
+      color: white;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-        #password-input {
-            width: 80%;
-            padding: 12px;
-            border: 2px solid var(--sage-green);
-            font-size: 1rem;
-            font-family: 'Crimson Text', serif;
-            margin-bottom: 15px;
-        }
+    button:hover {
+      background: #7a3a38;
+    }
 
-        #password-button {
-            background: var(--deep-forest);
-            color: var(--cream);
-            padding: 12px 30px;
-            font-family: 'Playfair Display', serif;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-        }
+    /* Hide ChatBase actions inside the iframe container */
+    #chatbase-container .cb-message-actions,
+    #chatbase-container .cb-message-action,
+    #chatbase-container .cb-like-dislike,
+    #chatbase-container .cb-retry,
+    #chatbase-container .cb-copy {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      width: 0 !important;
+      pointer-events: none !important;
+    }
 
-        #password-error {
-            color: var(--burgundy);
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Hidden Chat Room */
-        #chat-room {
-            display: none;
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: var(--warm-beige);
-            border: 3px solid var(--sage-green);
-            position: relative;
-        }
-
-        #chat-room::before {
-            content: '';
-            position: absolute;
-            top: -12px; left: -12px; right: -12px; bottom: -12px;
-            border: 1px solid var(--soft-gold);
-            pointer-events: none;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--deep-forest);
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        p.intro {
-            text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        iframe {
-            border: none;
-            width: 100%;
-            min-height: 750px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: var(--deep-forest);
-        }
-    </style>
+    /* Chat container styling */
+    #chatbase-container {
+      margin-top: 2rem;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(200, 164, 106, 0.45);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- 🔐 Parent Password Gate -->
+  <div class="wrapper">
+    <h1 class="title">SantaChat Room</h1>
+    <div class="divider"></div>
+
+    <!-- Password Gate -->
     <div id="password-gate">
-        <h2>Parent Access Required</h2>
-        <p style="margin-bottom:20px;">
-            Please enter the parent password to open your SantaChat Room.
-        </p>
-
-        <input id="password-input" type="password" placeholder="Enter password">
-        <br>
-        <button id="password-button">Enter</button>
-
-        <div id="password-error"></div>
+      <p style="color: var(--mmc-muted); font-style: italic;">Parents Only • Enter your password to unlock SantaChat</p>
+      <input type="password" id="parent-password" placeholder="Parent Password" />
+      <br />
+      <button onclick="checkPassword()">Enter</button>
     </div>
 
-    <!-- 🎅 Hidden SantaChat Room -->
-    <div id="chat-room">
-        <h1>SantaChat Room</h1>
-
-        <p class="intro">
-            Welcome to your family’s private SantaChat Room. When your child is ready,
-            they may begin talking to Santa below. Messages are warm, magical,
-            and designed to spark imagination.
-        </p>
-
-        <iframe
-            src="https://www.chatbase.co/chatbot-iframe/5_FijZYe-eAoW7FfBmL3z"
-        ></iframe>
+    <!-- ChatBase Embed -->
+    <div id="chatbase-container" style="display:none;">
+      <!-- Replace YOUR_IFRAME_ID with your actual ChatBase iframe ID -->
+      <iframe 
+        src="https://www.chatbase.co/chatbot-iframe/5_FijZYe-eAoW7FfBmL3z"
+        width="100%"
+        style="height: 700px; border: none;"
+        frameborder="0">
+      </iframe>
     </div>
+  </div>
 
-    <footer>Crafted with care by Magic Mail Co.</footer>
+<script>
+  function checkPassword() {
+    const correctPassword = "northpole123"; // replace with your real password
+    const inputPassword = document.getElementById("parent-password").value.trim();
 
-    <script>
-        // CHANGE YOUR PASSWORD HERE
-        const correctPassword = "northpole123";
-
-        const gate = document.getElementById("password-gate");
-        const room = document.getElementById("chat-room");
-        const input = document.getElementById("password-input");
-        const button = document.getElementById("password-button");
-        const error = document.getElementById("password-error");
-
-        button.addEventListener("click", () => {
-            if (input.value === correctPassword) {
-                gate.style.display = "none";
-                room.style.display = "block";
-                window.scrollTo(0, 0);
-            } else {
-                error.textContent = "Incorrect password. Please try again.";
-            }
-        });
-
-        // Allow Enter key
-        input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") button.click();
-        });
-    </script>
+    if (inputPassword === correctPassword) {
+      document.getElementById("password-gate").style.display = "none";
+      document.getElementById("chatbase-container").style.display = "block";
+    } else {
+      alert("Incorrect password. Please try again.");
+    }
+  }
+</script>
 
 </body>
 </html>
